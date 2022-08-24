@@ -1,11 +1,13 @@
 body {
     background-color: #EBE0A5;
+    margin: 0;
 }
 
 h1{
-    color: #3E3817;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #D06666;
     text-align: center;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 40px;
 }
 
 #table th {
@@ -20,18 +22,65 @@ h1{
     margin-left: 10vw;
     padding-left:15vw ;
 }
-
 a {
     font-family: Arial, Helvetica, sans-serif;
     text-decoration: none;
     font-size: 20px;
     font-weight: 700;
-    color: #5406dc;
+    color: #D06666;
     padding: 10px;
     margin: 10px;
 }
-
 a:hover {
     color: #c2b1df;
     font-size: 25px;
+    transition-delay: 200ms;
+}
+h2 {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #D06666;
+    text-align: center;
+}
+p {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+}
+.toppage {
+    display: flex;
+    flex-direction: row;
+    background-color: #d2ca98;
+}
+.toppage nav a{
+    padding: 30px;
+}
+.toppage nav{
+    margin-top: 30px;
+}
+.toppage img {
+    height: auto;
+    width: 200px;
+    padding: 10px;
+}
+#title {
+    border-bottom: dotted 20px;
+    font-size: 40px;
+}
+.card {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    max-width: 300px;
+    border:solid #d2ca98 5px;
+    margin: 30px;
+}
+.card img {
+    max-height: auto;
+    max-width: 300px;
+    border: solid #d2ca98 10px;
+}
+#merch {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
