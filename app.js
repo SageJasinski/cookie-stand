@@ -3,6 +3,8 @@
 let hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm']
 let collection = [];
 let table = document.getElementById('table');
+let hourlyT= [];
+let superGrand = [];
 
 function Store(minCust,maxCust,avrgCookie,name){
     this.name = name;
@@ -27,6 +29,7 @@ Store.prototype.generateCookie = function(){
     this.grandTotal += roundedCookies;
     // console.log(this.totalArray, this.grandTotal);
     };
+    superGrand.push(this.grandTotal);
 }
 
 Store.prototype.display = function(){
@@ -46,9 +49,42 @@ Store.prototype.display = function(){
         let totalSale = document.createElement('td');
         totalSale.textContent = this.grandTotal;
         row.appendChild(totalSale);
+    }
+    
+    function generateFooter(){
+        let grand = 0;
+        for(let hour in hours){
+            let salesAthour = 0;
+            for(let stores in collection){
+                let currentStore = collection[stores];
+                let currentSale = currentStore.totalArray[hour];
+                salesAthour += currentSale;
+                grand += currentSale;
+            }
+            hourlyT.push(salesAthour);
+            for (let i = 0; i < superGrand.length; i++){
+            let leGrand = grand + superGrand[i];
+            console.log(leGrand);
+            }
+            // console.log(`Sales at ${hours[hour]}: ${salesAthour}`);
+        }
+    }
+    
+    function tableFooter() {
+        let foot = document.createElement('tfoot');
+        table.appendChild(foot);
+        let row = document.createElement('tr');
+        foot.appendChild(row);
+        let label = document.createElement('th');
+        label.textContent = 'Hourly total'
+        row.appendChild(label);
+        
+        for (let i = 0; i < hours.length; i++){
+            let totalHR = document.createElement('td');
+        totalHR.textContent = hourlyT[i];
+        row.appendChild(totalHR);
+    }
 }
-
-display();
 
 function display(){
     let header = document.createElement('thead');
@@ -57,7 +93,7 @@ function display(){
     header.appendChild(row);
     let city = document.createElement('td');
     row.appendChild(city);
-
+    
     for(let i = 0; i < hours.length; i++){
         let time = document.createElement('th');
         time.textContent = hours[i];
@@ -67,6 +103,7 @@ function display(){
     totalLabel.textContent = 'Total';
     row.appendChild(totalLabel);
 }
+
 
 new Store(23,65,6.3,'Seattle');
 new Store(3,24,1.2,'Tokyo');
@@ -78,3 +115,7 @@ console.log(collection);
 for (let store of collection){
     store.display();
 }
+generateFooter();
+display();
+tableFooter();
+// console.log(superGrand)
