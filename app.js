@@ -51,24 +51,23 @@ Store.prototype.display = function(){
         row.appendChild(totalSale);
     }
     
-    function generateFooter(){
-        let grand = 0;
-        for(let hour in hours){
-            let salesAthour = 0;
-            for(let stores in collection){
-                let currentStore = collection[stores];
-                let currentSale = currentStore.totalArray[hour];
-                salesAthour += currentSale;
-                grand += currentSale;
-            }
-            hourlyT.push(salesAthour);
-            for (let i = 0; i < superGrand.length; i++){
-            let leGrand = grand + superGrand[i];
-            console.log(leGrand);
-            }
-            // console.log(`Sales at ${hours[hour]}: ${salesAthour}`);
+function generateFooter(){
+    let grand = 0;
+    for(let hour in hours){
+        let salesAthour = 0;
+        for(let stores in collection){
+            let currentStore = collection[stores];
+            let currentSale = currentStore.totalArray[hour];
+            salesAthour += currentSale;
+            grand += currentSale;
         }
+        hourlyT.push(salesAthour);
+        for (let i = 0; i < superGrand.length; i++){
+            grand + superGrand[i];
+        }
+        // console.log(`Sales at ${hours[hour]}: ${salesAthour}`);
     }
+}
     
     function tableFooter() {
         let foot = document.createElement('tfoot');
@@ -104,6 +103,36 @@ function display(){
     row.appendChild(totalLabel);
 }
 
+let cityForm = document.getElementById('new-city')
+
+cityForm.addEventListener('submit', function(event){
+    event.preventDefault();
+    console.log(event.target.City.value);
+    console.log(event.target.min.value);
+    console.log(event.target.max.value);
+    console.log(event.target.cookie.value);
+
+     if (event.target.City.value === null){
+        this.innerHTML = 'required';
+     }
+    new Store(
+        event.target.min.value, 
+        event.target.max.value, 
+        event.target.cookie.value, 
+        event.target.City.value);
+
+    table.innerHTML = '';
+    collect();
+    console.log(generateFooter());
+    display();
+    tableFooter();
+});
+
+function collect(){
+    for (let store of collection){
+        store.display();
+    }
+}
 
 new Store(23,65,6.3,'Seattle');
 new Store(3,24,1.2,'Tokyo');
@@ -111,10 +140,7 @@ new Store(11,38,4.6,'Dubai');
 new Store(20,38,2.3,'Paris');
 new Store(2,16,4.6,'Lima');
 
-console.log(collection);
-for (let store of collection){
-    store.display();
-}
+collect();
 generateFooter();
 display();
 tableFooter();
