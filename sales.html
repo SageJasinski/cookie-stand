@@ -11,19 +11,28 @@
         <form id="new-city">
             <fieldset>
                 <legend>Add a new City</legend>
-                <label>City :</label>
-                <input name="City" type="text" required>
+                    <div class="form"> 
+                        <div class="feild">
+                            <label>City :</label>
+                            <input name="City" type="text" required>
+                        </div>
 
-                <label>minimum Customers/hr :</label>
-                <input name="min" type="number">
+                        <div class="feild">
+                        <label>minimum Customers/hr :</label>
+                        <input name="min" type="number">
+                        </div>
+                        
+                        <div class="feild">
+                        <label>Maximum Customers/hr :</label>
+                        <input name="max" type="number">
+                        </div>
+                        <div>
+                        <label>Average Cookies per customer:</label>
+                        <input name="cookie" type="number">
+                        </div>
 
-                <label>Maximum Customers/hr :</label>
-                <input name="max" type="number">
-
-                <label>Average Cookies per customer:</label>
-                <input name="cookie" type="number">
-
-                <button type="submit">Enter</button>
+                        <button type="submit">Enter</button>
+                </div>
                 </fieldset>
         </form>
         <script src="app.js"></script>

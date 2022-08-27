@@ -112,9 +112,6 @@ cityForm.addEventListener('submit', function(event){
     console.log(event.target.max.value);
     console.log(event.target.cookie.value);
 
-     if (event.target.City.value === null){
-        this.innerHTML = 'required';
-     }
     new Store(
         event.target.min.value, 
         event.target.max.value, 
